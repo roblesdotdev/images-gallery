@@ -1,7 +1,22 @@
+import { useState } from 'react'
+import Header from './components/Header'
+import Search from './components/Search'
+
 function App() {
+  const [query, setQuery] = useState<string | null>(null)
+
+  const handleSearch = (query: string) => {
+    console.log(query)
+  }
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-100">
-      <h1 className="text-2xl font-bold text-slate-800">Working...</h1>
+    <div className="min-h-screen bg-slate-100">
+      <Header />
+      <Search query={query} setQuery={setQuery} onSearch={handleSearch} />
+
+      <div className="mt-6 px-4">
+        <p>Search results</p>
+      </div>
     </div>
   )
 }
